@@ -19,7 +19,9 @@ export const Blog = ({ item }) => {
       <h2 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h2>
       <h3 className="text-lg font-medium text-gray-600 mb-2">{item.blog_name}</h3>
       <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-        <span className="font-semibold">Author: {item.author}</span>
+        {item.author && (
+          <span className="font-semibold"> Author: {item.author}</span>
+        )}
         <span>{date}</span>
       </div>
       <p className="text-gray-700 line-clamp-3 mb-4">{item.text}</p>

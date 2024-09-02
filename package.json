@@ -2,12 +2,13 @@
   "name": "blogproject",
   "version": "1.0.0",
   "description": "A blog project",
-  "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "workbox": "workbox generateSW workbox-config.js",
+    "postbuild": "npm run workbox",
+    "serve-build": "npm run build && serve -s dist"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
     "React",
     "Redux"
   ],
+  "proxy": "https://api.twingly.com",
   "author": "Arman Ali",
   "license": "ISC",
   "bugs": {
@@ -28,12 +30,15 @@
     "@heroicons/react": "^2.1.5",
     "@reduxjs/toolkit": "^2.2.7",
     "dotenv": "^16.4.5",
+    "firebase": "^10.13.1",
     "parcel": "^2.12.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
     "react-router-dom": "^6.26.1",
-    "react-toggle": "^4.1.3"
+    "react-toggle": "^4.1.3",
+    "serve": "^14.2.3",
+    "workbox-cli": "^7.1.0"
   },
   "devDependencies": {
     "buffer": "^6.0.3",
