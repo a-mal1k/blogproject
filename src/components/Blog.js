@@ -15,7 +15,7 @@ export const Blog = ({ item }) => {
     formatDate();
   }, [])
   return (
-    <div className="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out m-2 lg:m-4 p-4 rounded-lg">
+    <div className="bg-white shadow-md hover:shadow-teal-900 transition-shadow duration-300 ease-in-out m-2 lg:m-4 p-4 rounded-lg">
       <h2 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h2>
       <h3 className="text-lg font-medium text-gray-600 mb-2">{item.blog_name}</h3>
       <div className="flex items-center justify-between text-sm text-gray-500 mb-4">

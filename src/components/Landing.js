@@ -1,6 +1,5 @@
 import React from 'react'
 import useFetchQuery from '../hooks/useFetchQuery';
-import { Header } from './Header';
 import { Blogs } from './Blogs';
 import Shimmer from './Shimmer';
 import LanguageToggler from './LanguageToggler';
@@ -38,16 +37,15 @@ export const Landing = () => {
 
 
     return (
-        <>
-            <Header />
-            <main className='py-4 px-2 lg:px-4'>
-                {loading ? <LoadingComponent /> : err.length ? <ErrorComponent /> : !data.length ? <NoResult /> : (
-                    <>
-                        <LanguageToggler />
-                        <Blogs data={data} />
-                    </>
-                )}
-            </main>
-        </>
+
+        <main className='py-4 px-2 lg:px-4'>
+            {loading ? <LoadingComponent /> : err.length ? <ErrorComponent /> : !data.length ? <NoResult /> : (
+                <>
+                    <LanguageToggler />
+                    <Blogs data={data} />
+                </>
+            )}
+        </main>
+
     )
 }

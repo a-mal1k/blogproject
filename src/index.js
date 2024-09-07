@@ -4,12 +4,39 @@ import 'dotenv/config';
 import { Landing } from './components/Landing';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { Header } from './components/Header';
+import { Search } from './components/Search';
+
 
 const Component = () => (
     <Provider store={store}>
-        <Landing />
+      <Header />
+      <Outlet />
     </Provider>
 );
+
+const appRouter = createBrowserRouter([
+  {
+    path:'/',
+    element:<Component />,
+    children: [
+      {
+        path: '/',
+        element: <Landing />
+      },
+      {
+        path: '/blogs',
+        element: <Landing />
+      },
+      {
+        path: '/search',
+        element: <Search />
+      }
+    ]
+  }
+])
+
 let root = ReactDOM.createRoot(document.getElementById('root'));
 console.log(`[APP] running in ${process.env.NODE_ENV} mode.`)
 if (process.env.NODE_ENV === 'production') {
@@ -28,4 +55,4 @@ if (process.env.NODE_ENV === 'production') {
     })
   }
 }
-root.render(<Component />)
+root.render(<RouterProvider router={appRouter} />)

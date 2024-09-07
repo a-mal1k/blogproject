@@ -10,6 +10,7 @@ const useFetchQuery = () => {
   const query = `${searchQuery} page:1 page-size:50 lang:${langQuery}`;
   const apiKey = process.env.REACT_APP_API_KEY;
   const baseUrl = process.env.REACT_APP_BASE_URL;
+
   useEffect(() => {
     fetchData();
   }, [langQuery, searchQuery]);

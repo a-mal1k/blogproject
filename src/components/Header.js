@@ -1,21 +1,47 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { MagnifyingGlassIcon, UserIcon, Bars4Icon  } from '@heroicons/react/24/solid';
+import Drawer from './Drawer';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setSearchQuery } from '../redux/querySlice';
 
 export const Header = () => {
+    const [drawerOpen, setDrawerOpen] = useState(false);
+    const dispatch = useDispatch();
+
+    const toggleDrawer = () => {
+        if(drawerOpen) {
+          setDrawerOpen(false)
+          document.body.classList.remove('overflow-hidden');
+        } else {
+          setDrawerOpen(true)
+          document.body.classList.add('overflow-hidden');
+        }
+      }
     return (
+        <>
         <header className='flex flex-wrap items-center gap-5 justify-between bg-gray-900 py-2 px-5'>
-        <div className="text-3d text-white text-lg lg:text-3xl my-2 lg:my-4">
+        <Link to='/' className="text-3d text-white text-lg lg:text-3xl my-2 lg:my-4">
         Blogo<span role="img" aria-label="winking face"></span>pedia
-        </div>
-        <div className='flex items-center border-b-2 border-b-white pb-2 flex-shrink-0 lg:w-auto w-full lg:order-1 order-3'>
+        </Link>
+
+        <ul className='text-white flex gap-5'>
+          <li className='text-md font-medium cursor-pointer' role='button'  onClick={()=> dispatch(setSearchQuery('Uncategorized'))}>All</li>
+          <li className='text-md font-medium cursor-pointer' role='button' onClick={()=> dispatch(setSearchQuery('technology'))}>Technology</li>
+          <li className='text-md font-medium cursor-pointer' role='button' onClick={()=> dispatch(setSearchQuery('lifestyle'))}>Lifestyle</li>
+          <li className='text-md font-medium cursor-pointer' role='button' onClick={()=> dispatch(setSearchQuery('travel'))}>Travel</li>
+          <li className='text-md font-medium cursor-pointer' role='button' onClick={()=> dispatch(setSearchQuery('entertainment'))}>Entertainment</li>
+        </ul>
+  
+        <div className='nav-items flex items-center gap-4'>
+             <Link to='/search'>
             <MagnifyingGlassIcon className="h-6 w-6 text-white mr-2" />
-            <input type='text' name='search' id="search" className='bg-transparent text-white focus:border-none focus:outline-none w-full' placeholder='Search...' />
-        </div>
-        <div className='nav-items flex items-center gap-4 flex-shrink-0 lg:order-2 order-2'>
+            </Link>
             <UserIcon className="h-6 w-6 text-white" />
-            <Bars4Icon className="h-6 w-6 text-white" />
+            <Bars4Icon className="h-6 w-6 text-white cursor-pointer" onClick={toggleDrawer} />
         </div>
     </header>
-    
+    {drawerOpen && <Drawer toggleDrawer={toggleDrawer}/>}
+    </>
     )
 }

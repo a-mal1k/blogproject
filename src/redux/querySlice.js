@@ -8,7 +8,7 @@ const querySlice = createSlice({
   },
   reducers: {
     setSearchQuery: (state, action) => {
-      state.query = action.payload;
+      state.searchQuery = action.payload;
     },
     setLangQuery: (state, action) => {
         state.langQuery = action.payload;
