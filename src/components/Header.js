@@ -5,7 +5,7 @@ export const Header = () => {
     return (
         <header className='flex flex-wrap items-center gap-5 justify-between bg-gray-900 py-2 px-5'>
         <div className="text-3d text-white text-lg lg:text-3xl my-2 lg:my-4">
-        Blog<span role="img" aria-label="winking face">😉</span>pedia
+        Blogo<span role="img" aria-label="winking face"></span>pedia
         </div>
         <div className='flex items-center border-b-2 border-b-white pb-2 flex-shrink-0 lg:w-auto w-full lg:order-1 order-3'>
             <MagnifyingGlassIcon className="h-6 w-6 text-white mr-2" />

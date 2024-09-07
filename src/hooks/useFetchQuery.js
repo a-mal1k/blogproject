@@ -17,14 +17,17 @@ const useFetchQuery = () => {
   const fetchData = () => {
     setLoading(true);
     const apiUrl = `${baseUrl}?q=${query}&apikey=${apiKey}&format=json`;
-    fetch(apiUrl).then(res => res.json()).then(dataItem => {
-       if(dataItem.error) {
+    const url = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
+    fetch(url).then(res => res.json()).then(dataItem => {
+      let parsedData = JSON.parse(dataItem.contents);
+       if(parsedData.error) {
         let msg = `Error in Query:
-        code: ${dataItem.code}
-        Msg: ${dataItem.error}`;
+        code: ${parsedData.code}
+        Msg: ${parsedData.error}`;
         setErr(msg);
+        setData([])
        } else {
-        setData(dataItem.documents);
+        setData(parsedData.documents);
        }
     }).catch(err => setErr(err)).finally(() => setLoading(false)); 
   };
