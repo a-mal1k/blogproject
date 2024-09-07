@@ -20,7 +20,7 @@ export const Header = () => {
       }
     return (
         <>
-        <header className='flex flex-wrap items-center gap-5 justify-between bg-gray-900 py-2 px-5'>
+        <header className='flex flex-wrap items-center sticky top-0 z-10  gap-5 justify-between bg-gray-900 py-2 px-5'>
         <Link to='/' className="text-3d text-white text-lg lg:text-3xl my-2 lg:my-4">
         Blogo<span role="img" aria-label="winking face"></span>pedia
         </Link>
