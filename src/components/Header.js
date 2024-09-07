@@ -25,7 +25,7 @@ export const Header = () => {
         Blogo<span role="img" aria-label="winking face"></span>pedia
         </Link>
 
-        <ul className='text-white flex gap-5'>
+        <ul className='text-white gap-5 hidden lg:flex'>
           <li className='text-md font-medium cursor-pointer' role='button'  onClick={()=> dispatch(setSearchQuery('Uncategorized'))}>All</li>
           <li className='text-md font-medium cursor-pointer' role='button' onClick={()=> dispatch(setSearchQuery('technology'))}>Technology</li>
           <li className='text-md font-medium cursor-pointer' role='button' onClick={()=> dispatch(setSearchQuery('lifestyle'))}>Lifestyle</li>
