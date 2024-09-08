@@ -25,7 +25,7 @@ export const Blog = ({ item }) => {
         <span>{date}</span>
       </div>
       <p className="text-gray-700 line-clamp-3 mb-4">{item.text}</p>
-      <a href={item.url} className="text-blue-500 hover:text-blue-700 font-semibold">Read more</a>
+      <a  href={item.url} target='_blank' className="text-blue-500 hover:text-blue-700 font-semibold">Read more</a>
     </div>
 
   )
